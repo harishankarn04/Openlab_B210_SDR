@@ -45,6 +45,17 @@ To quickly deploy this SDR module onto a fresh Linux machine (e.g. Ubuntu):
 
 > **⚠️ WARNING:** Do not connect the TX and RX ports directly with an SMA cable without placing a physical inline attenuator (minimum 30dB) in the loop! Running loopbacks with 50+ dB of `tx_gain` on a naked SMA cable will permanently destroy the low-noise amplifier on the B210. 
 
+## Running Unit Tests (No SDR Required)
+
+If you want to rapidly test the protocol's mathematical integrity (like benchmarking the `encode_rep3` corruption threshold) without physically transmitting or opening GNU Radio, you can run the localized Root Python Tests. 
+
+These perform instantaneous End-to-End (`e2e`) virtual testing dynamically bridging the codebase in your terminal:
+```bash
+python3 e2e_image_test.py
+python3 test_fec.py
+```
+**(This folder also includes `e2e_test.py` and `test_lib.py` for raw benchmarking).*
+
 ## Making Code Changes (For Developers)
 
 If you need to modify the protocol's logic (such as adjusting the `encode_rep3` Nuclear FEC equations or configuring OpenCV compression limits):

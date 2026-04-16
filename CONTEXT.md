@@ -25,9 +25,9 @@ The entire project has been cleaned up and securely installed deep within the `o
   * **Generic Data**: Natively compressed using `lzma`.
 * **Terminal UI**: These blocks natively render rigid Console loading bars (`[████------] 30%`) using standard terminal carriage returns (`\r`) so progress tracking is clean and strictly ticks down rather than spamming the GNU Radio logs.
 
-### Testing and Validation Flowgraphs
-* **`e2e_test.py` & `e2e_image_test.py`**: Terminal-based isolated testing scripts.
-* **`simulation_test_smart.grc`**: The primary software-defined GRC simulation flowgraph using the AWGN Channel Model.
+### Testing and Validation (Root Directory)
+* **`e2e_test.py`, `e2e_image_test.py`, `test_fec.py`, `test_lib.py`**: These are Standalone Terminal Unit Tests sitting in the root directory. They do NOT need compilation. They simply import the installed `custom_gfsk/` library natively. Developers and AI agents can execute these instantly (e.g. `python3 e2e_image_test.py`) to rapidly benchmark mathematical protocol changes directly in the terminal without launching heavy GNURadio GUI pipelines.
+* **`simulation_test.grc`**: The primary software-defined GRC simulation flowgraph using the virtual AWGN Channel Model.
 * **`hardware_test.grc`**: A flowgraph explicitly built for testing over-the-air with actual physical SDR hardware (USRP B210).
 
 ## Current Project Phase
