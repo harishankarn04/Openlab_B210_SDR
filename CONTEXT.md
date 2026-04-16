@@ -32,3 +32,9 @@ The entire project has been cleaned up and securely installed deep within the `o
 
 ## Current Project Phase
 The workspace root has been wiped clean of legacy files, redundant Python units, and dummy text files. The current phase is focused strictly on implementing physical **Hardware Support using the Ettus USRP B210**, phasing out the virtual AWGN simulations to test real RF airgapped communications.
+
+## Cross-Platform Linux Deployment Architecture
+For deployment outside of the macOS/Conda sandbox, this project includes native Linux synchronization protocols:
+* **`install_linux.sh`**: A highly robust automation bash script that leverages `.deb`/`apt` native frameworks to automatically download `gnuradio`, `uhd-host`, `ffmpeg`, and standard Python requirements. It safely sidesteps modern PIP PEP-668 "Externally Managed Environment" errors by utilizing pure APT distributions of Python's OpenCV. The script completely containerizes the OOT deployment locally.
+* **`requirements.txt`**: Standard fallback definitions indicating hard dependencies (`numpy >= 1.20`, `opencv-python >= 4.5`, `Pillow >= 8.0`).
+* **`README.md`**: Provides standardized, user-facing documentation detailing setup schemas and explicit hardware loopback warnings (attenuation requirements for SMA testing). Future chatbots should consult the README natively.
