@@ -1,0 +1,21 @@
+id: custom_gfsk_custom_file_sink
+label: Custom File Sink
+category: '[Custom GFSK]'
+
+templates:
+  imports: |
+    from custom_gfsk import custom_file_sink
+  make: custom_file_sink(output_file=${output_file})
+
+parameters:
+- id: output_file
+  label: Output File Path
+  dtype: file_save
+  default: ''
+
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+
+file_format: 1

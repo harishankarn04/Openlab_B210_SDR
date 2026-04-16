@@ -1,0 +1,17 @@
+# GNU Radio & Python Cache
+__pycache__/
+*.pyc
+.gnuradio/
+
+# OS specific
+.DS_Store
+
+# Temporary outputs from testing
+*.bin
+*.mp4
+hardware_recovered
+grc_test_output*
+out_normal.jpg
+out_rst.jpg
+recovered_output.jpg
+output_awgn.png

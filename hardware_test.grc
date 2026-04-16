@@ -1,0 +1,272 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: hardware_test
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Hardware Test Robust Custom GFSK
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+
+- name: freq
+  id: variable
+  parameters:
+    comment: ''
+    value: '915000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [280, 12.0]
+    rotation: 0
+    state: enabled
+
+- name: rx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '50'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 12.0]
+    rotation: 0
+    state: enabled
+
+- name: tx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '50'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [376, 12.0]
+    rotation: 0
+    state: enabled
+
+- name: channels_channel_model_0
+  id: channels_channel_model
+  parameters:
+    affinity: ''
+    alias: ''
+    block_tags: 'False'
+    comment: ''
+    epsilon: '1.0'
+    freq_offset: '0.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: '0.1'
+    seed: '0'
+    taps: '1.0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [360, 412.0]
+    rotation: 0
+    state: disabled
+
+- name: custom_gfsk_custom_file_sink_0
+  id: custom_gfsk_custom_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    output_file: /Users/harishankar/Downloads/scratch/hardware_recovered
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1024, 340.0]
+    rotation: 0
+    state: enabled
+
+- name: custom_gfsk_custom_file_source_0
+  id: custom_gfsk_custom_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    filepath: /Users/harishankar/Downloads/scratch/test_pattern.jpg
+    image_quality: '30'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    video_bitrate: '200'
+    video_fps: '24'
+    video_resolution: '480'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 164.0]
+    rotation: 0
+    state: enabled
+
+- name: custom_gfsk_rx_0
+  id: custom_gfsk_rx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enable_fec: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    sample_rate: samp_rate
+    samples_per_symbol: '4'
+    sync_threshold: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [768, 332.0]
+    rotation: 0
+    state: enabled
+
+- name: custom_gfsk_tx_0
+  id: custom_gfsk_tx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enable_fec: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_symbol: '4'
+    tx_amplitude: '0.7'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 204.0]
+    rotation: 0
+    state: enabled
+
+- name: uhd_usrp_sink_0
+  id: uhd_usrp_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: '"TX/RX"'
+    ant1: '"TX/RX"'
+    bandwidth0: '0'
+    center_freq0: freq
+    clock_rate: 0.0
+    clock_source0: ''
+    comment: ''
+    dev_addr: '""'
+    dev_args: '""'
+    gain0: tx_gain
+    gain1: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    num_mboards: '1'
+    otw: ''
+    samp_rate: samp_rate
+    sd_spec0: ''
+    show_ports: 'False'
+    stream_args: ''
+    stream_chans: '[]'
+    sync: sync
+    time_source0: ''
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [752, 148.0]
+    rotation: 0
+    state: enabled
+
+- name: uhd_usrp_source_0
+  id: uhd_usrp_source
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: '"RX2"'
+    ant1: '"RX2"'
+    bandwidth0: '0'
+    center_freq0: freq
+    clock_rate: 0.0
+    clock_source0: ''
+    comment: ''
+    dc_offs0: 0+0j
+    dc_offs_enb0: default
+    dev_addr: '""'
+    dev_args: '""'
+    gain0: rx_gain
+    gain1: '0'
+    iq_imbal0: 0+0j
+    iq_imbal_enb0: default
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    num_mboards: '1'
+    otw: ''
+    rx_agc0: Default
+    samp_rate: samp_rate
+    sd_spec0: ''
+    show_ports: 'False'
+    stream_args: ''
+    stream_chans: '[]'
+    sync: sync
+    time_source0: ''
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [456, 316.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [custom_gfsk_custom_file_source_0, '0', custom_gfsk_tx_0, '0']
+- [custom_gfsk_rx_0, '0', custom_gfsk_custom_file_sink_0, '0']
+- [custom_gfsk_tx_0, '0', uhd_usrp_sink_0, '0']
+- [uhd_usrp_source_0, '0', custom_gfsk_rx_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.12.0

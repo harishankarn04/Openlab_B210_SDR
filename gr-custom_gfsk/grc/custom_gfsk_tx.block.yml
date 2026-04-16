@@ -1,0 +1,34 @@
+id: custom_gfsk_tx
+label: Custom GFSK TX
+category: '[Custom GFSK]'
+
+templates:
+  imports: |
+    from custom_gfsk import packet_encoder
+  make: packet_encoder(samples_per_symbol=${samples_per_symbol}, tx_amplitude=${tx_amplitude}, enable_fec=${enable_fec})
+
+parameters:
+- id: enable_fec
+  label: Enable FEC (Turbo Toggle)
+  dtype: bool
+  default: 'True'
+- id: samples_per_symbol
+  label: Samples/Symbol
+  dtype: int
+  default: 2
+- id: tx_amplitude
+  label: TX Amplitude (Baseband)
+  dtype: float
+  default: 0.7
+
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+
+outputs:
+- label: out
+  domain: stream
+  dtype: complex
+
+file_format: 1

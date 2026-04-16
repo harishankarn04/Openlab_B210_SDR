@@ -1,0 +1,38 @@
+id: custom_gfsk_rx
+label: Custom GFSK RX
+category: '[Custom GFSK]'
+
+templates:
+  imports: |
+    from custom_gfsk import packet_decoder
+  make: packet_decoder(samples_per_symbol=${samples_per_symbol}, sync_threshold=${sync_threshold}, sample_rate=${sample_rate}, enable_fec=${enable_fec})
+
+parameters:
+- id: enable_fec
+  label: Enable FEC (Turbo Toggle)
+  dtype: bool
+  default: 'True'
+- id: samples_per_symbol
+  label: Samples/Symbol
+  dtype: int
+  default: 2
+- id: sync_threshold
+  label: Sync Threshold (Bits)
+  dtype: int
+  default: 4
+- id: sample_rate
+  label: Sample Rate (Hz)
+  dtype: float
+  default: 1000000.0
+
+inputs:
+- label: in
+  domain: stream
+  dtype: complex
+
+outputs:
+- label: out
+  domain: stream
+  dtype: byte
+
+file_format: 1

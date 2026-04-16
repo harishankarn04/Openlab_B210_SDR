@@ -1,0 +1,37 @@
+id: custom_gfsk_custom_file_source
+label: Custom File Source
+category: '[Custom GFSK]'
+
+templates:
+  imports: |
+    from custom_gfsk import custom_file_source
+  make: custom_file_source(filepath=${filepath}, image_quality=${image_quality}, video_resolution=${video_resolution}, video_fps=${video_fps}, video_bitrate=${video_bitrate})
+
+parameters:
+- id: filepath
+  label: File Path
+  dtype: file_open
+  default: ''
+- id: image_quality
+  label: Image Quality (0-100)
+  dtype: int
+  default: 30
+- id: video_resolution
+  label: Video Vertical Resolution (p)
+  dtype: int
+  default: 480
+- id: video_fps
+  label: Video Framerate (fps)
+  dtype: int
+  default: 24
+- id: video_bitrate
+  label: Video Bitrate (kbps)
+  dtype: int
+  default: 200
+
+outputs:
+- label: out
+  domain: stream
+  dtype: byte
+
+file_format: 1
