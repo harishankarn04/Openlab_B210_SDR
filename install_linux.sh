@@ -20,11 +20,16 @@ echo "[3/4] Installing Core Python Libraries..."
 # to definitively prevent PIP/PEP-668 "Externally Managed Environment" conflicts!
 sudo apt install -y python3-numpy python3-opencv python3-pil
 
-echo "[4/4] Activating Custom GFSK Block Protocol..."
-# The --break-system-packages flag allows modern Ubuntu to safely install editable local blocks
+echo "[4/4] Building and Globally Linking Core Module with CMake..."
+# Installing CMake and builder tools to natively compile and place GNU Radio files into the host OS directory
+sudo apt install -y cmake build-essential gnuradio-dev
 cd gr-custom_gfsk
-pip3 install -e . --break-system-packages || pip3 install -e .
-cd ..
+mkdir -p build && cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig
+cd ../..
 
 echo ""
 echo "Checking USRP Firmware Images..."
