@@ -44,3 +44,15 @@ To quickly deploy this SDR module onto a fresh Linux machine (e.g. Ubuntu):
 3. If you do not have hardware plugged in, you can validate the code purely in math using `gnuradio-companion simulation_test.grc`.
 
 > **⚠️ WARNING:** Do not connect the TX and RX ports directly with an SMA cable without placing a physical inline attenuator (minimum 30dB) in the loop! Running loopbacks with 50+ dB of `tx_gain` on a naked SMA cable will permanently destroy the low-noise amplifier on the B210. 
+
+## Making Code Changes (For Developers)
+
+If you need to modify the protocol's logic (such as adjusting the `encode_rep3` Nuclear FEC equations or configuring OpenCV compression limits):
+
+1. Open a code editor and modify the raw Python files located explicitly inside: `Openlab_B210_SDR/gr-custom_gfsk/python/custom_gfsk/`
+2. To dynamically push your new code back to GNU Radio, enter your compilation folder and trigger the install map:
+   ```bash
+   cd Openlab_B210_SDR/gr-custom_gfsk/build
+   sudo make install
+   ```
+3. Your new transmission logic will be instantly active the next time you hit Play in GNU Radio Companion!
