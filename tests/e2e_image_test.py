@@ -4,7 +4,7 @@ import time
 from gnuradio import gr, blocks, channels
 from PIL import Image
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'gr-custom_gfsk', 'python'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'gr-custom_gfsk', 'python'))
 from custom_gfsk import packet_encoder, packet_decoder, custom_file_source, custom_file_sink
 
 class e2e_image_fg(gr.top_block):

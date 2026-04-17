@@ -51,8 +51,8 @@ If you want to rapidly test the protocol's mathematical integrity (like benchmar
 
 These perform instantaneous End-to-End (`e2e`) virtual testing dynamically bridging the codebase in your terminal:
 ```bash
-python3 e2e_image_test.py
-python3 test_fec.py
+python3 tests/e2e_image_test.py
+python3 tests/test_fec.py
 ```
 **(This folder also includes `e2e_test.py` and `test_lib.py` for raw benchmarking).*
 
